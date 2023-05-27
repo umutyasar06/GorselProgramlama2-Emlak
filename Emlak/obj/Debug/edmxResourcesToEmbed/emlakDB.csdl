@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="emlakDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ayarlar">
+    <Key>
+      <PropertyRef Name="resimKonum" />
+    </Key>
+    <Property Name="logKayitKonum" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="resimKonum" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ev">
+    <Key>
+      <PropertyRef Name="emlakNumarasi" />
+    </Key>
+    <Property Name="emlakNumarasi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="odaSayisi" Type="Int32" Nullable="false" />
+    <Property Name="katNumarasi" Type="Int32" Nullable="false" />
+    <Property Name="semt" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="toplamEvAlani" Type="Int32" Nullable="false" />
+    <Property Name="yapimTarihi" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="evTuru" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="evDurumu" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="il" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ilce" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="KiralikEv" Relationship="Self.FK_KiralikEv_Ev" FromRole="Ev" ToRole="KiralikEv" />
+    <NavigationProperty Name="Musteris" Relationship="Self.FK_Musteri_Ev" FromRole="Ev" ToRole="Musteri" />
+    <NavigationProperty Name="SatilikEv" Relationship="Self.FK_SatilikEv_Ev" FromRole="Ev" ToRole="SatilikEv" />
+  </EntityType>
+  <EntityType Name="iller">
+    <Key>
+      <PropertyRef Name="il_no" />
+    </Key>
+    <Property Name="il_no" Type="Int32" Nullable="false" />
+    <Property Name="isim" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ilcelers" Relationship="Self.fk_il_no" FromRole="iller" ToRole="ilceler" />
+  </EntityType>
+  <EntityType Name="KiralikEv">
+    <Key>
+      <PropertyRef Name="emlakNumarasi" />
+    </Key>
+    <Property Name="emlakNumarasi" Type="Int32" Nullable="false" />
+    <Property Name="kira" Type="Int32" Nullable="false" />
+    <Property Name="depozito" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Ev" Relationship="Self.FK_KiralikEv_Ev" FromRole="KiralikEv" ToRole="Ev" />
+  </EntityType>
+  <EntityType Name="Kullanici">
+    <Key>
+      <PropertyRef Name="kullaniciID" />
+    </Key>
+    <Property Name="kullaniciAd" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="kullaniciSifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="kullaniciID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="yetki" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Musteri">
+    <Key>
+      <PropertyRef Name="musteriID" />
+    </Key>
+    <Property Name="musteriID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ad" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="soyad" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="telefonNo" Type="Int32" Nullable="false" />
+    <Property Name="mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="tc" Type="Int32" Nullable="false" />
+    <Property Name="adres" Type="String" MaxLength="255" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="emlakNumarasi" Type="Int32" Nullable="false" />
+    <Property Name="resim" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Ev" Relationship="Self.FK_Musteri_Ev" FromRole="Musteri" ToRole="Ev" />
+  </EntityType>
+  <EntityType Name="SatilikEv">
+    <Key>
+      <PropertyRef Name="emlakNumarasi" />
+    </Key>
+    <Property Name="emlakNumarasi" Type="Int32" Nullable="false" />
+    <Property Name="fiyat" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Ev" Relationship="Self.FK_SatilikEv_Ev" FromRole="SatilikEv" ToRole="Ev" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ilceler">
+    <Key>
+      <PropertyRef Name="ilce_no" />
+      <PropertyRef Name="il_no" />
+    </Key>
+    <Property Name="ilce_no" Type="Int32" Nullable="false" />
+    <Property Name="isim" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="il_no" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="iller" Relationship="Self.fk_il_no" FromRole="ilceler" ToRole="iller" />
+  </EntityType>
+  <Association Name="FK_KiralikEv_Ev">
+    <End Role="Ev" Type="Self.Ev" Multiplicity="1" />
+    <End Role="KiralikEv" Type="Self.KiralikEv" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Ev">
+        <PropertyRef Name="emlakNumarasi" />
+      </Principal>
+      <Dependent Role="KiralikEv">
+        <PropertyRef Name="emlakNumarasi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Musteri_Ev">
+    <End Role="Ev" Type="Self.Ev" Multiplicity="1" />
+    <End Role="Musteri" Type="Self.Musteri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ev">
+        <PropertyRef Name="emlakNumarasi" />
+      </Principal>
+      <Dependent Role="Musteri">
+        <PropertyRef Name="emlakNumarasi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SatilikEv_Ev">
+    <End Role="Ev" Type="Self.Ev" Multiplicity="1" />
+    <End Role="SatilikEv" Type="Self.SatilikEv" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Ev">
+        <PropertyRef Name="emlakNumarasi" />
+      </Principal>
+      <Dependent Role="SatilikEv">
+        <PropertyRef Name="emlakNumarasi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_il_no">
+    <End Role="iller" Type="Self.iller" Multiplicity="1" />
+    <End Role="ilceler" Type="Self.ilceler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="iller">
+        <PropertyRef Name="il_no" />
+      </Principal>
+      <Dependent Role="ilceler">
+        <PropertyRef Name="il_no" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="emlakDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ayarlars" EntityType="Self.ayarlar" />
+    <EntitySet Name="Evs" EntityType="Self.Ev" />
+    <EntitySet Name="illers" EntityType="Self.iller" />
+    <EntitySet Name="KiralikEvs" EntityType="Self.KiralikEv" />
+    <EntitySet Name="Kullanicis" EntityType="Self.Kullanici" />
+    <EntitySet Name="Musteris" EntityType="Self.Musteri" />
+    <EntitySet Name="SatilikEvs" EntityType="Self.SatilikEv" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="ilcelers" EntityType="Self.ilceler" />
+    <AssociationSet Name="FK_KiralikEv_Ev" Association="Self.FK_KiralikEv_Ev">
+      <End Role="Ev" EntitySet="Evs" />
+      <End Role="KiralikEv" EntitySet="KiralikEvs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Musteri_Ev" Association="Self.FK_Musteri_Ev">
+      <End Role="Ev" EntitySet="Evs" />
+      <End Role="Musteri" EntitySet="Musteris" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SatilikEv_Ev" Association="Self.FK_SatilikEv_Ev">
+      <End Role="Ev" EntitySet="Evs" />
+      <End Role="SatilikEv" EntitySet="SatilikEvs" />
+    </AssociationSet>
+    <AssociationSet Name="fk_il_no" Association="Self.fk_il_no">
+      <End Role="iller" EntitySet="illers" />
+      <End Role="ilceler" EntitySet="ilcelers" />
+    </AssociationSet>
+    <FunctionImport Name="il_listeleme" ReturnType="Collection(String)">
+      <Parameter Name="il" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="kiralik_ev_select" ReturnType="Collection(emlakDBModel.kiralik_ev_select_Result)" />
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(emlakDBModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(emlakDBModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="kiralik_ev_select_Result">
+    <Property Type="Int32" Name="emlakNumarasi" Nullable="false" />
+    <Property Type="Int32" Name="odaSayisi" Nullable="false" />
+    <Property Type="Int32" Name="katNumarasi" Nullable="false" />
+    <Property Type="String" Name="semt" Nullable="false" MaxLength="255" />
+    <Property Type="Int32" Name="toplamEvAlani" Nullable="false" />
+    <Property Type="DateTime" Name="yapimTarihi" Nullable="false" />
+    <Property Type="String" Name="evTuru" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="evDurumu" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="il" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="ilce" Nullable="false" MaxLength="20" />
+    <Property Type="Int32" Name="emlakNumarasi1" Nullable="false" />
+    <Property Type="Int32" Name="kira" Nullable="false" />
+    <Property Type="Int32" Name="depozito" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="emlakDBModelStoreContainer" CdmEntityContainer="emlakDBEntities">
+    <EntitySetMapping Name="ayarlars">
+      <EntityTypeMapping TypeName="emlakDBModel.ayarlar">
+        <MappingFragment StoreEntitySet="ayarlar">
+          <ScalarProperty Name="logKayitKonum" ColumnName="logKayitKonum" />
+          <ScalarProperty Name="resimKonum" ColumnName="resimKonum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Evs">
+      <EntityTypeMapping TypeName="emlakDBModel.Ev">
+        <MappingFragment StoreEntitySet="Ev">
+          <ScalarProperty Name="emlakNumarasi" ColumnName="emlakNumarasi" />
+          <ScalarProperty Name="odaSayisi" ColumnName="odaSayisi" />
+          <ScalarProperty Name="katNumarasi" ColumnName="katNumarasi" />
+          <ScalarProperty Name="semt" ColumnName="semt" />
+          <ScalarProperty Name="toplamEvAlani" ColumnName="toplamEvAlani" />
+          <ScalarProperty Name="yapimTarihi" ColumnName="yapimTarihi" />
+          <ScalarProperty Name="evTuru" ColumnName="evTuru" />
+          <ScalarProperty Name="evDurumu" ColumnName="evDurumu" />
+          <ScalarProperty Name="il" ColumnName="il" />
+          <ScalarProperty Name="ilce" ColumnName="ilce" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="illers">
+      <EntityTypeMapping TypeName="emlakDBModel.iller">
+        <MappingFragment StoreEntitySet="iller">
+          <ScalarProperty Name="il_no" ColumnName="il_no" />
+          <ScalarProperty Name="isim" ColumnName="isim" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KiralikEvs">
+      <EntityTypeMapping TypeName="emlakDBModel.KiralikEv">
+        <MappingFragment StoreEntitySet="KiralikEv">
+          <ScalarProperty Name="emlakNumarasi" ColumnName="emlakNumarasi" />
+          <ScalarProperty Name="kira" ColumnName="kira" />
+          <ScalarProperty Name="depozito" ColumnName="depozito" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kullanicis">
+      <EntityTypeMapping TypeName="emlakDBModel.Kullanici">
+        <MappingFragment StoreEntitySet="Kullanici">
+          <ScalarProperty Name="kullaniciAd" ColumnName="kullaniciAd" />
+          <ScalarProperty Name="kullaniciSifre" ColumnName="kullaniciSifre" />
+          <ScalarProperty Name="kullaniciID" ColumnName="kullaniciID" />
+          <ScalarProperty Name="yetki" ColumnName="yetki" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Musteris">
+      <EntityTypeMapping TypeName="emlakDBModel.Musteri">
+        <MappingFragment StoreEntitySet="Musteri">
+          <ScalarProperty Name="musteriID" ColumnName="musteriID" />
+          <ScalarProperty Name="ad" ColumnName="ad" />
+          <ScalarProperty Name="soyad" ColumnName="soyad" />
+          <ScalarProperty Name="telefonNo" ColumnName="telefonNo" />
+          <ScalarProperty Name="mail" ColumnName="mail" />
+          <ScalarProperty Name="tc" ColumnName="tc" />
+          <ScalarProperty Name="adres" ColumnName="adres" />
+          <ScalarProperty Name="emlakNumarasi" ColumnName="emlakNumarasi" />
+          <ScalarProperty Name="resim" ColumnName="resim" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SatilikEvs">
+      <EntityTypeMapping TypeName="emlakDBModel.SatilikEv">
+        <MappingFragment StoreEntitySet="SatilikEv">
+          <ScalarProperty Name="emlakNumarasi" ColumnName="emlakNumarasi" />
+          <ScalarProperty Name="fiyat" ColumnName="fiyat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="emlakDBModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ilcelers">
+      <EntityTypeMapping TypeName="emlakDBModel.ilceler">
+        <MappingFragment StoreEntitySet="ilceler">
+          <ScalarProperty Name="ilce_no" ColumnName="ilce_no" />
+          <ScalarProperty Name="isim" ColumnName="isim" />
+          <ScalarProperty Name="il_no" ColumnName="il_no" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="il_listeleme" FunctionName="emlakDBModel.Store.il_listeleme" />
+    <FunctionImportMapping FunctionImportName="kiralik_ev_select" FunctionName="emlakDBModel.Store.kiralik_ev_select">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="emlakDBModel.kiralik_ev_select_Result">
+          <ScalarProperty Name="emlakNumarasi" ColumnName="emlakNumarasi" />
+          <ScalarProperty Name="odaSayisi" ColumnName="odaSayisi" />
+          <ScalarProperty Name="katNumarasi" ColumnName="katNumarasi" />
+          <ScalarProperty Name="semt" ColumnName="semt" />
+          <ScalarProperty Name="toplamEvAlani" ColumnName="toplamEvAlani" />
+          <ScalarProperty Name="yapimTarihi" ColumnName="yapimTarihi" />
+          <ScalarProperty Name="evTuru" ColumnName="evTuru" />
+          <ScalarProperty Name="evDurumu" ColumnName="evDurumu" />
+          <ScalarProperty Name="il" ColumnName="il" />
+          <ScalarProperty Name="ilce" ColumnName="ilce" />
+          <ScalarProperty Name="emlakNumarasi1" ColumnName="emlakNumarasi1" />
+          <ScalarProperty Name="kira" ColumnName="kira" />
+          <ScalarProperty Name="depozito" ColumnName="depozito" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="emlakDBModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="emlakDBModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="emlakDBModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="emlakDBModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="emlakDBModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="emlakDBModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="emlakDBModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="emlakDBModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="emlakDBModel.Store.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>
